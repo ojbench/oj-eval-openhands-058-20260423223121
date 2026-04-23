@@ -31,6 +31,10 @@ public:
         if (attackType == "flying" && defenseType == "grass") return 2.0f;
         if (attackType == "dragon" && defenseType == "dragon") return 2.0f;
         
+        // 0x relationships (must check before 0.5x)
+        if (attackType == "ground" && defenseType == "flying") return 0.0f;
+        if (attackType == "electric" && defenseType == "ground") return 0.0f;
+        
         // 0.5x relationships (reverse of 2x)
         if (attackType == "fire" && defenseType == "water") return 0.5f;
         if (attackType == "ground" && defenseType == "water") return 0.5f;
@@ -39,13 +43,8 @@ public:
         if (attackType == "ground" && defenseType == "grass") return 0.5f;
         if (attackType == "water" && defenseType == "electric") return 0.5f;
         if (attackType == "flying" && defenseType == "electric") return 0.5f;
-        if (attackType == "electric" && defenseType == "ground") return 0.5f;
         if (attackType == "fire" && defenseType == "ground") return 0.5f;
         if (attackType == "grass" && defenseType == "flying") return 0.5f;
-        
-        // 0x relationships
-        if (attackType == "ground" && defenseType == "flying") return 0.0f;
-        if (attackType == "electric" && defenseType == "ground") return 0.0f;
         
         return 1.0f;
     }
