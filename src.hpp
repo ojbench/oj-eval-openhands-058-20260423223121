@@ -15,9 +15,6 @@
 class TypeSystem {
 public:
     static float getDamageMultiplier(const std::string& attackType, const std::string& defenseType) {
-        // Default is 1.0x
-        if (attackType == defenseType) return 1.0f;
-        
         // 2x relationships
         if (attackType == "water" && defenseType == "fire") return 2.0f;
         if (attackType == "water" && defenseType == "ground") return 2.0f;
