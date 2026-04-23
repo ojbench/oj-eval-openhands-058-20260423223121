@@ -317,7 +317,7 @@ public:
                             damage *= TypeSystem::getDamageMultiplier(attackType, defType);
                         }
                         
-                        if (damage >= 2.0f) {
+                        if (damage >= 2.0f - 1e-6f) {
                             canBeCaught = true;
                             break;
                         }
