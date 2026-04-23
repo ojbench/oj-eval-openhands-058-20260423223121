@@ -131,16 +131,19 @@ private:
         std::ifstream file(fileName);
         if (!file.is_open()) return;
         
-        int count;
-        file >> count;
+        int count = 0;
+        if (!(file >> count)) {
+            file.close();
+            return;
+        }
         file.ignore();
         
         for (int i = 0; i < count; i++) {
             Pokemon p;
             std::string nameStr, typesStr;
-            file >> nameStr >> p.id;
+            if (!(file >> nameStr >> p.id)) break;
             file.ignore();
-            std::getline(file, typesStr);
+            if (!std::getline(file, typesStr)) break;
             
             strncpy(p.name, nameStr.c_str(), 11);
             p.name[11] = '\0';
@@ -266,6 +269,7 @@ public:
             ss << r.second << "\n";
         }
         std::string result = ss.str();
+        // Remove trailing newline for consistency
         if (!result.empty() && result.back() == '\n') {
             result.pop_back();
         }
