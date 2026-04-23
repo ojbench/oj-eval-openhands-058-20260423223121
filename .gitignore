@@ -1,0 +1,6 @@
+test_main
+test_main.cpp
+test.txt
+*.o
+*.out
+a.out
