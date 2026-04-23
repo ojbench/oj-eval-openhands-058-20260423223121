@@ -265,12 +265,7 @@ public:
         for (const auto& r : results) {
             ss << r.second << "\n";
         }
-        std::string result = ss.str();
-        // Remove trailing newline for consistency
-        if (!result.empty() && result.back() == '\n') {
-            result.pop_back();
-        }
-        return result;
+        return ss.str();
     }
 
     float attack(const char *type, int id) const {
